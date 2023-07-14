@@ -2,29 +2,14 @@ name: Mover Issue
 on:
   push:
     branches:
-      - main
-# on:
-#   schedule:
-#     - cron: '0 0 * * *'  # Define o cron para executar diariamente, às 00:00 (UTC)
-
+      - test_runer 
 jobs:
-  move-issues:
+  cycle-weekly-close:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Set up Python
-        uses: actions/setup-python@v2
-        with:
-          python-version: 3.x  # Define a versão do Python a ser usada
-
-      - name: Install dependencies
-        run: pip install PyGithub requests
-
-      - name: Move Issues
-        run: python .github/workflows/move-issues-labels.py
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
-          REPO_NAME: 'silvio-godinho/test_automation_github_issues'
+    - uses: actions/checkout@master
+    - name: weekly-issue-closure
+      uses: bdougie/close-issues-based-on-label@master
+      env:
+        LABEL: marretada
+        GITHUB_TOKEN: ${{ secrets.MY_TOKEN }}
