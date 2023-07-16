@@ -1,0 +1,16 @@
+name: 'Move expired cards'
+on:
+    push:
+      branches:
+        - test_runer 
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: yuta1024/cards-moving-automation@v1
+        with:
+          repo_token: ${{ secrets.MY_TOKEN }}
+          project: 'silvio-teste'
+          from_column: 'Aprovado'
+          to_column: 'Validando'
