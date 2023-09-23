@@ -3,6 +3,7 @@ on:
   pull_request:
     branches:
       - main
+      
 jobs:
   move-assigned-card:
     runs-on: ubuntu-latest
