@@ -13,3 +13,4 @@ jobs:
           project: 2
           column: Pronto
           repo-token: ${{ secrets.MY_TOKEN }}
+
